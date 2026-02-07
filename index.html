@@ -1,222 +1,731 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. C. Muralidharan | Faculty Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr. C. Muralidharan | Faculty Portfolio</title>
+  <meta name="description" content="Faculty portfolio of Dr. C. Muralidharan – Journals, Conferences, Book Chapters, Patents, FDPs, Guest Lectures, Academic & Experience." />
 
-<style>
-body{
-font-family:Segoe UI;
-margin:0;
-background:#f5f7fb;
-}
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a33;
+      --card:#0f1f3f;
+      --text:#eaf0ff;
+      --muted:#b9c6e5;
+      --brand:#5aa7ff;
+      --brand2:#7c5cff;
+      --line:rgba(255,255,255,0.12);
+      --shadow:0 14px 34px rgba(0,0,0,.28);
+      --radius:18px;
+    }
+    [data-theme="light"]{
+      --bg:#f5f7fb;
+      --panel:#ffffff;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#4b5b7a;
+      --brand:#0b3d91;
+      --brand2:#1e90ff;
+      --line:rgba(11,18,32,0.14);
+      --shadow:0 14px 34px rgba(11,18,32,.10);
+    }
 
-nav{
-background:#0b3d91;
-color:white;
-padding:15px 30px;
-display:flex;
-justify-content:space-between;
-position:sticky;
-top:0;
-}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background:
+        radial-gradient(1100px 560px at 18% 0%, rgba(90,167,255,.18), transparent 60%),
+        radial-gradient(920px 520px at 92% 8%, rgba(124,92,255,.16), transparent 55%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1180px; margin:0 auto; padding:0 20px}
 
-nav a{
-color:white;
-margin:0 12px;
-text-decoration:none;
-}
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      border-bottom:1px solid var(--line);
+      background: rgba(15,26,51,.78);
+      backdrop-filter: blur(10px);
+    }
+    [data-theme="light"] .nav{background:rgba(255,255,255,.85)}
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .brand-badge{
+      width:34px; height:34px; border-radius:12px;
+      background:linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: var(--shadow);
+    }
+    .nav-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+    .pill{
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-weight:700;
+      transition:.15s ease;
+    }
+    .pill:hover{transform:translateY(-1px); color:var(--text); border-color:rgba(90,167,255,.45)}
+    .btn{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(90,167,255,.45);
+      background:linear-gradient(135deg, rgba(90,167,255,.18), rgba(124,92,255,.14));
+      color:var(--text);
+      font-weight:900;
+      transition:.15s ease;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow: var(--shadow)}
+    .btn.secondary{
+      background:transparent;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-weight:800;
+    }
+    .toggle{cursor:pointer; user-select:none}
 
-.hero{
-background:linear-gradient(to right,#0b3d91,#1e90ff);
-color:white;
-text-align:center;
-padding:60px 20px;
-}
+    /* HERO */
+    .hero{padding:32px 0 8px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media(max-width:980px){ .hero-grid{grid-template-columns:1fr} }
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    [data-theme="light"] .panel{background:var(--panel)}
+    .hero-left{padding:24px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:6px 10px; border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted); font-weight:800; font-size:13px;
+    }
+    .title{
+      margin:12px 0 6px;
+      font-size:40px; line-height:1.05; letter-spacing:-.6px;
+    }
+    @media(max-width:520px){ .title{font-size:32px} }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:16px;
+      max-width:80ch;
+    }
+    .hero-cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
 
-section{
-padding:40px 20px;
-max-width:1100px;
-margin:auto;
-}
+    .hero-right{padding:18px}
+    .profile{
+      display:flex; gap:14px; align-items:center; padding:18px;
+      border-bottom:1px solid var(--line);
+    }
+    .avatar{
+      width:84px; height:84px; border-radius:24px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:linear-gradient(135deg, rgba(90,167,255,.25), rgba(124,92,255,.18));
+      display:flex; align-items:center; justify-content:center;
+    }
+    .avatar img{width:100%; height:100%; object-fit:cover; display:block}
+    .meta h3{margin:0; font-size:16px}
+    .meta p{margin:4px 0 0; color:var(--muted); font-size:13px; line-height:1.5}
 
-.card{
-background:white;
-padding:18px;
-margin:10px 0;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-}
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      padding:18px;
+    }
+    .stat{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:rgba(255,255,255,.02);
+    }
+    [data-theme="light"] .stat{background:#fbfcff}
+    .stat .n{font-size:18px; font-weight:950}
+    .stat .k{margin-top:4px; font-size:12px; color:var(--muted); font-weight:800}
 
-h2{color:#0b3d91}
+    /* SECTION + CARDS */
+    .section{padding:18px 0}
+    h2{margin:0 0 12px; font-size:20px; letter-spacing:-.2px}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    @media(max-width:980px){ .grid-2{grid-template-columns:1fr} }
+    .card{
+      background:rgba(255,255,255,.02);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    [data-theme="light"] .card{background:var(--card)}
+    .muted{color:var(--muted)}
+    ul{margin:0; padding-left:18px; line-height:1.75}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:7px 10px;
+      background:rgba(255,255,255,.02);
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
 
-</style>
+    /* TABS */
+    .tabs{
+      display:flex; flex-wrap:wrap;
+      gap:10px;
+      margin:8px 0 12px;
+    }
+    .tab{
+      cursor:pointer;
+      user-select:none;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.02);
+      color:var(--muted);
+      font-weight:900;
+      transition:.15s ease;
+    }
+    [data-theme="light"] .tab{background:#fbfcff}
+    .tab.active{
+      color:var(--text);
+      border-color:rgba(90,167,255,.55);
+      transform:translateY(-1px);
+    }
+
+    /* SEARCH + LIST */
+    .toolbar{
+      display:flex; flex-wrap:wrap; gap:10px;
+      align-items:center; justify-content:space-between;
+      margin:10px 0 12px;
+    }
+    .search{
+      flex:1; min-width:240px;
+      display:flex; gap:8px; align-items:center;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 12px;
+      background:rgba(255,255,255,.02);
+    }
+    [data-theme="light"] .search{background:#fbfcff}
+    .search input{
+      width:100%;
+      border:none; outline:none;
+      background:transparent;
+      color:var(--text);
+      font-weight:750;
+    }
+    .count{color:var(--muted); font-weight:900}
+
+    .list{display:grid; grid-template-columns:1fr; gap:10px}
+    .item{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 14px;
+      background:rgba(255,255,255,.02);
+    }
+    [data-theme="light"] .item{background:#fbfcff}
+    .item .top{
+      display:flex; flex-wrap:wrap;
+      align-items:flex-start; justify-content:space-between;
+      gap:8px;
+    }
+    .item .t{
+      margin:0;
+      font-size:15px;
+      font-weight:950;
+      line-height:1.35;
+    }
+    .badges{display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end}
+    .badge{
+      font-size:12px;
+      font-weight:950;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(90,167,255,.40);
+      background:linear-gradient(135deg, rgba(90,167,255,.14), rgba(124,92,255,.10));
+      white-space:nowrap;
+    }
+    .badge.gray{
+      border-color: var(--line);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+    }
+    .meta{
+      margin-top:8px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      word-break:break-word;
+    }
+    .meta a{ text-decoration:underline; }
+
+    footer{
+      margin-top:16px;
+      padding:26px 0;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      text-align:center;
+    }
+  </style>
 </head>
 
-<body>
+<body data-theme="light">
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="brand-badge"></span>
+          <span>Dr. C. Muralidharan</span>
+        </div>
+        <div class="nav-actions">
+          <a class="pill" href="#profile">Profile</a>
+          <a class="pill" href="#researchhub">Research Hub</a>
+          <a class="pill" href="#contact">Contact</a>
+          <a class="btn secondary toggle" id="themeBtn">🌓 Theme</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<nav>
-<b>Dr. C. Muralidharan</b>
-<div>
-<a href="#journals">Journals</a>
-<a href="#conferences">Conferences</a>
-<a href="#books">Book Chapters</a>
-<a href="#patents">Patents</a>
-<a href="#fdp">FDP</a>
-<a href="#talks">Talks</a>
-</div>
-</nav>
+  <!-- HERO -->
+  <div class="hero" id="profile">
+    <div class="container hero-grid">
+      <div class="panel hero-left">
+        <div class="kicker">Assistant Professor • Dept. of Computing Technologies • SRM IST</div>
+        <h1 class="title">Faculty Portfolio</h1>
+        <p class="subtitle">
+          Ph.D. in Computer Science & Engineering (Anna University). Research focus includes Cloud Risk Analysis, Cloud Computing,
+          Machine Learning, IoT and Data Analytics.
+        </p>
+        <div class="hero-cta">
+          <a class="btn" href="cv.pdf" download>⬇️ Download CV</a>
+          <!-- Replace # links -->
+          <a class="btn secondary" href="#" target="_blank" rel="noopener">🎓 Google Scholar</a>
+          <a class="btn secondary" href="#" target="_blank" rel="noopener">📌 Scopus</a>
+          <a class="btn secondary" href="#" target="_blank" rel="noopener">🧾 ORCID</a>
+          <a class="btn secondary" href="#" target="_blank" rel="noopener">💼 LinkedIn</a>
+        </div>
+      </div>
 
-<div class="hero">
-<h1>Dr. C. Muralidharan</h1>
-<p>Assistant Professor – SRM IST</p>
-<p>Cloud Computing | ML | IoT | Data Analytics</p>
-</div>
+      <div class="panel hero-right">
+        <div class="profile">
+          <div class="avatar" title="Add your photo as profile.jpg">
+            <img src="profile.jpg" alt="Profile photo" onerror="this.style.display='none'; this.parentElement.innerHTML='📷';"/>
+          </div>
+          <div class="meta">
+            <h3>Dr. C. Muralidharan</h3>
+            <p class="muted">
+              Email: muralidc@srmist.edu.in • murali20infotech@gmail.com<br/>
+              Mobile: +91 9585579526
+            </p>
+          </div>
+        </div>
 
-<section id="journals">
-<h2>International Journals</h2>
-<div id="journalList"></div>
-</section>
+        <div class="stats">
+          <div class="stat"><div class="n">7+ yrs</div><div class="k">Experience</div></div>
+          <div class="stat"><div class="n">10</div><div class="k">International Journals</div></div>
+          <div class="stat"><div class="n">15</div><div class="k">Conference Entries</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<section id="conferences">
-<h2>Conference Papers</h2>
-<div id="confList"></div>
-</section>
+  <!-- ACADEMIC + EXPERIENCE -->
+  <div class="container section">
+    <h2>Academic & Experience</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p style="margin:0 0 10px"><b>Academic Qualifications</b></p>
+        <ul class="muted">
+          <li>Ph.D. – Computer Science and Engineering, Anna University (2021)</li>
+          <li>M.E. – Computer Science and Engineering, Anna University (2015) – CGPA: 7.9</li>
+          <li>B.Tech – Information Technology, Anna University (2013) – CGPA: 7.79</li>
+          <li>HSC – 78% (2009)</li>
+          <li>SSLC – 77% (2007)</li>
+        </ul>
+      </div>
 
-<section id="books">
-<h2>Book Chapters</h2>
-<div id="bookList"></div>
-</section>
+      <div class="card">
+        <p style="margin:0 0 10px"><b>Professional Experience</b></p>
+        <ul class="muted">
+          <li>Assistant Professor – SRM Institute of Science and Technology (Dec 2021 – Present)</li>
+          <li>Assistant Professor – Sri Venkateswara College of Engineering (Jul 2021 – Nov 2021)</li>
+          <li>Assistant Professor – Bannari Amman Institute of Technology (Aug 2020 – May 2021)</li>
+          <li>Research Scholar – Sri Venkateswara College of Engineering (Feb 2016 – Jul 2020)</li>
+        </ul>
+      </div>
+    </div>
 
-<section id="patents">
-<h2>Patents</h2>
-<div id="patentList"></div>
-</section>
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card">
+        <p style="margin:0 0 10px"><b>Research Profile</b></p>
+        <p class="muted" style="margin:0; line-height:1.75">
+          Ph.D Topic: <b>Selection of Cloud Service Provider Based on Risk Analysis</b>. Involved in Cloud Risk Analysis research
+          activity in collaboration with DST-SERB Cloud Research Lab (as stated in resume).
+        </p>
+        <div class="tags">
+          <span class="tag">Cloud Computing</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">IoT</span>
+          <span class="tag">Data Analytics</span>
+        </div>
+        <p class="muted" style="margin:12px 0 0"><b>Projects Guided:</b> M.E – 4 • B.E – 18</p>
+      </div>
 
-<section id="talks">
-<h2>Guest Lectures / Resource Person</h2>
-<div id="talkList"></div>
-</section>
+      <div class="card">
+        <p style="margin:0 0 10px"><b>Personal & Contact</b></p>
+        <p class="muted" style="margin:0; line-height:1.75">
+          DOB: 20 Aug 1991 • Gender: Male • Marital Status: Married • Nationality: Indian<br/>
+          Languages: Tamil, English, Hindi<br/>
+          Address: 1/37, East Street, Semmar & Post, Villupuram – 607107
+        </p>
+      </div>
+    </div>
+  </div>
 
-<section id="fdp">
-<h2>FDP / Workshops Attended</h2>
-<div id="fdpList"></div>
-</section>
+  <!-- RESEARCH HUB (TABS) -->
+  <div class="container section" id="researchhub">
+    <h2>Research Hub</h2>
+
+    <div class="tabs" id="tabs">
+      <div class="tab active" data-tab="journals">Journals</div>
+      <div class="tab" data-tab="conferences">Conferences</div>
+      <div class="tab" data-tab="books">Book Chapters</div>
+      <div class="tab" data-tab="patents">Patents</div>
+      <div class="tab" data-tab="talks">Guest Lectures</div>
+      <div class="tab" data-tab="fdp">FDP / Workshops Attended</div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search">
+        🔎 <input id="q" type="text" placeholder="Search by title / author / year / organizer / DOI..." />
+      </div>
+      <div class="count" id="count">0 items</div>
+    </div>
+
+    <div class="list" id="list"></div>
+  </div>
+
+  <!-- CONTACT + REFERENCES -->
+  <div class="container section" id="contact">
+    <h2>Contact & References</h2>
+    <div class="grid-2">
+      <div class="card">
+        <p style="margin:0 0 8px"><b>Contact</b></p>
+        <p class="muted" style="margin:0">Email: muralidc@srmist.edu.in</p>
+        <p class="muted" style="margin:0">Email: murali20infotech@gmail.com</p>
+        <p class="muted" style="margin:0">Mobile: +91 9585579526</p>
+      </div>
+
+      <div class="card">
+        <p style="margin:0 0 8px"><b>References</b></p>
+        <p class="muted" style="margin:0 0 10px">
+          <b>Dr. R. Anitha</b><br/>
+          Professor & Head, CSE, Sri Venkateswara College of Engineering<br/>
+          Contact: 9952337212
+        </p>
+        <p class="muted" style="margin:0">
+          <b>Dr. Mohamed Sirajudeen Yoosuf</b><br/>
+          Assistant Professor, VIT-AP University<br/>
+          Contact: 7200805880
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Dr. C. Muralidharan • Faculty Portfolio
+  </footer>
 
 <script>
+  // Theme toggle
+  const themeBtn = document.getElementById('themeBtn');
+  const root = document.body;
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme){ root.setAttribute('data-theme', savedTheme); }
+  themeBtn.addEventListener('click', () => {
+    const now = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', now);
+    localStorage.setItem('theme', now);
+  });
 
-/* ===========================
-   JOURNAL PAPERS
-=========================== */
+  // ---------- DATA (FULL DETAILS from Annexure 1 & 2) ----------
+  const journals = [
+    {
+      year: 2024,
+      title: "Improved Tuberculosis Detection through Deep Learning",
+      authors: "Deepak, G; Muralidharan, C",
+      venue: "International Research Journal of Multidisciplinary Scope",
+      extra: "2024, 5(2), pp. 540–548.",
+      doi: ""
+    },
+    {
+      year: 2022,
+      title: "Three-phase service level agreements and trust management model for monitoring and managing the services by trusted cloud broker",
+      authors: "Muralidharan C; Mohamed Sirajudeen Y; Shitharth S; Nawaf Alhebaishi; Rayan H. Mosli; Hassan Haes Alhelou",
+      venue: "IET Communications",
+      extra: "pp. 1–12. (SCI & SCIE Indexed – Impact Factor – 345)",
+      doi: "https://doi.org/10.1049/cmu2.12484"
+    },
+    {
+      year: 2022,
+      title: "FogDedupe: A Fog-Centric Deduplication Approach Using Multi-Key Homomorphic Encryption Technique",
+      authors: "Mohamed Sirajudeen Yoosuf; Muralidharan; S. Shitharth; Mohammed Alghamdi; Mohammed Maray; Osama Bassam J. Rabie",
+      venue: "Journal of Sensors",
+      extra: "pp. 1–16. (SCI & SCIE Indexed – Impact Factor – 2.336)",
+      doi: "https://doi.org/10.1155/2022/6759875"
+    },
+    {
+      year: 2020,
+      title: "Trusted Cloud Broker for Estimating the Reputation of cloud providers in Federated Cloud Environment",
+      authors: "Muralidharan C; Anitha, R",
+      venue: "Concurrency and Computation: Practice and Experience",
+      extra: "pp. 1–19. (SCI & SCIE Indexed – Impact Factor – 1.83)",
+      doi: "https://doi.org/10.1002/cpe.6537"
+    },
+    {
+      year: 2021,
+      title: "EDSAC – An Efficient Dempster Shafer Algorithm for Classification to Estimate the Service, Security and Privacy risks with the Service Providers",
+      authors: "Muralidharan C; R. Anitha",
+      venue: "Wireless Personal Communications",
+      extra: "pp. 1–20. (SCI & SCIE Indexed – Impact Factor – 2.01)",
+      doi: "https://link.springer.com/article/10.1007/s11277-021-09105-8"
+    },
+    {
+      year: 2019,
+      title: "Risk Analysis of Cloud Service Providers by Analyzing the Frequency of Occurrence of Problems using E-Eclat Algorithm",
+      authors: "Muralidharan C; Anitha, R",
+      venue: "Wireless Networks",
+      extra: "pp. 1–10. (SCI & SCIE Indexed – Impact Factor – 2.7)",
+      doi: "https://doi.org/10.1007/s11276-019-02191-4"
+    },
+    {
+      year: 2019,
+      title: "Efficient Deduplication on Cloud Environment using Bloom Filter and IND-CCA2 Secured Cramer Shoup Cryptosystem",
+      authors: "Mohamed Sirajudeen Y; Muralidharan; R. Anitha",
+      venue: "Lecture Notes on Data Engineering and Communications Technologies",
+      extra: "pp. 714–723. (Scopus Indexed)",
+      doi: ""
+    },
+    {
+      year: 2019,
+      title: "Energy Aware and System Level Scheduling in Cloud Computing Environment",
+      authors: "Muralidharan C; L. Shyamala; R. Anitha",
+      venue: "International Journal on Emerging Technologies",
+      extra: "2019. (Accepted) (Scopus Indexed)",
+      doi: ""
+    },
+    {
+      year: "",
+      title: "Survey on Tasks and Approaches of Sentiment Analysis",
+      authors: "Muralidharan C; R. Anitha",
+      venue: "Advances in Engineering Research, Atlantis Press",
+      extra: "Vol. 142, pp. 82–87.",
+      doi: ""
+    },
+    {
+      year: 2015,
+      title: "Cloud Services Lifecycle of IT services Through Semantic Technology",
+      authors: "Jainullabdeen A; Muralidharan C; Nithya B",
+      venue: "Discovery Journal",
+      extra: "Vol. 30, No. 128, pp. 234–239.",
+      doi: ""
+    }
+  ];
 
-const journals = [
-"Improved Tuberculosis Detection through Deep Learning, 2024",
-"Three-phase service level agreements and trust management model – IET Communications, 2022",
-"FogDedupe – Journal of Sensors, 2022",
-"Trusted Cloud Broker – Concurrency and Computation, 2020",
-"EDSAC – Wireless Personal Communications, 2021",
-"Risk Analysis using E-Eclat – Wireless Networks, 2019",
-"Efficient Deduplication – Lecture Notes on Data Engineering, 2019",
-"Energy Aware Scheduling – International Journal on Emerging Technologies, 2019",
-"Survey on Sentiment Analysis – Atlantis Press",
-"Cloud Services Lifecycle – Discovery Journal, 2015"
-];
+  const bookChapters = [
+    {year: 2023, title:"Internet of Agro Drones for Precision Agriculture", authors:"Muralidharan, C; Yoosuf, M.S.; Rajkumar, Y.; Shivaprasad, D.D.", venue:"Internet of Drones: Applications, Opportunities, and Challenges", extra:"2023, pp. 139–153.", doi:""},
+    {year: 2023, title:"Decision Support and Knowledge Representation in Health care", authors:"Muralidharan C; Mohamed Sirajudeen Y; Somasundaram, R", venue:"Internet of Medical Things in Smart Healthcare: Post-COVID-19 Pandemic Scenario", extra:"2023, pp. 119–136.", doi:""},
+    {year: 2022, title:"Digitalized Land Registration using Blockchain Technology", authors:"Vinothiyalakshmi P; Muralidharan C; Mohamed Sirajudeen Y; Anitha, R", venue:"Blockchain Technology: Exploring Opportunities, Challenges, and Applications (CRC Press)", extra:"pp. 1–14.", doi:"https://doi.org/10.1201/9781003138082"},
+    {year: "", title:"Empowerment of Internet of Things through the integration of Blockchain Technology", authors:"Muralidharan C; Mohamed Sirajudeen Y; Rajkumar Y", venue:"Block Chain and Deep Learning – Future Trends and Enabling Technology (Springer, Studies in Bigdata)", extra:"(Scopus Indexed)", doi:"http://dx.doi.org/10.1007/978-3-030-95419-2_7"},
+    {year: 2022, title:"Cloud-based industrial IoT infrastructure to facilitate efficient data analytics", authors:"Padmavathy, T; C. Muralidharan; Y. Mohamed Sirajudeen", venue:"Cloud Analytics for Industry 4.0 (De Gruyter)", extra:"pp. 1–22.", doi:"https://doi.org/10.1515/9783110771572-003"},
+    {year: 2020, title:"Synergy of Internet of Things with Cloud, Artificial Intelligence and Blockchain for Empowering Autonomous Vehicles", authors:"Muralidharan C; Mohamed Sirajudeen Y; R. Anitha", venue:"Deep Learning and Big Data for Intelligent Transportation (Springer Nature, Studies in Computational Intelligence)", extra:"pp. 1–23. (Scopus Indexed)", doi:""},
+    {year: 2020, title:"Patient Report Analysis for Identification and Diagnosis of Disease", authors:"Muralidharan C; Mohamed Sirajudeen Y; R. Anitha", venue:"Machine Learning for Healthcare – Handling and Managing Data (CRC Press – Taylor & Francis)", extra:"pp. 129–158.", doi:""}
+  ];
 
-/* ===========================
-   CONFERENCES
-=========================== */
+  const conferences = [
+    {year: 2025, title:"Enhancing Hyperspectral Image Classification and Segmentation with GNN and Ensemble U-Net", authors:"K. Kishore Anthuvan Sahayaraj; V. Arulalan; C. Muralidharan; G. Balamurugan", venue:"2025 International Conference on Emerging Technologies in Engineering Applications (ICETEA), Puducherry, India", extra:"pp. 1–6", doi:"10.1109/ICETEA64585.2025.11100045"},
+    {year: 2025, title:"Low-Cost Handheld Ultrasound for Rural Healthcare: Sonolite", authors:"R. Bharati; P. R; A. Singh; A. Khanna; Arulalan V; Muralidharan C", venue:"2025 11th International Conference on Communication and Signal Processing (ICCSP), Melmaruvathur, India", extra:"pp. 1484–1489", doi:"10.1109/ICCSP64183.2025.11089200"},
+    {year: 2025, title:"Unveiling Smoking Behavior Dynamics Through Graph Neural Network Analysis", authors:"Deepak, G; Lavankumar, R; Muralidharan, C; Aralikatti, S.A.", venue:"Soft Computing and Signal Processing, ICSCSP 2024 (Lecture Notes in Networks and Systems, vol 1221), Springer, Singapore", extra:"", doi:"https://doi.org/10.1007/978-981-96-0924-6_44"},
+    {year: 2025, title:"Fetal Health Analysis based on CTG", authors:"Rajeev Madiraju; Utkarsh Upadhyay; Muralidharan C; Ritul Bharati", venue:"2025 11th International Conference on Communication and Signal Processing (ICCSP), Melmaruvathur, India", extra:"pp. 1706–1711", doi:"10.1109/ICCSP64183.2025.11088792"},
+    {year: 2025, title:"An Adaptive Model for Vehicle Surveillance Using YOLOv3 with Spatial Pyramid Pooling", authors:"Arulalan, V; Sahayaraj, K.K.A; Muralidharan, C; Sheoran, N", venue:"Soft Computing and Signal Processing, ICSCSP 2024 (LNNS vol 1221), Springer, Singapore", extra:"", doi:"https://doi.org/10.1007/978-981-96-0924-6_45"},
+    {year: 2024, title:"Text summarization using BART", authors:"Adhik, C; Lakshmi, S.S; Muralidharan, C", venue:"AIP Conference Proceedings", extra:"2024, 3075(1), 020038", doi:""},
+    {year: 2024, title:"Proximity Device Identification Using RSSI Based Metrics", authors:"Bansal, K; Rajendran, R; Muralidharan, C; Pandey, N; Pandey, K", venue:"AIP Conference Proceedings", extra:"2024, 3075(1), 020274", doi:""},
+    {year: 2024, title:"Enhanced Real-Time Abnormal Event Detection in Video Surveillance for Safety and Security", authors:"Muralidharan, C; Arulalan, V; Sahayaraj, K; Sheoran, N", venue:"2024 3rd International Conference on Smart Technologies and Systems for Next Generation Computing (ICSTSN 2024)", extra:"2024", doi:""},
+    {year: 2024, title:"Healthbot- An AI based chatbot using Webspider and Mediglobe", authors:"Reddy, V.V; Singh, T; Muralidharan, C", venue:"Proceedings of the 2024 10th International Conference on Communication and Signal Processing (ICCSP 2024)", extra:"pp. 1229–1234", doi:""},
+    {year: 2021, title:"Meteorological Data Analysis for Auto-irrigation", authors:"Muralidharan C; Mohamed Sirajudeen Y; Rajkumar Y", venue:"3rd International Conference on Recent Advances in Management and Technology", extra:"pp. 324–328", doi:""},
+    {year: 2020, title:"Autonomous Trust Management Model for managing the Service Level Objectives", authors:"Muralidharan C; Anitha, R", venue:"Smart Materials & Emerging Technologies for Industry 4.0", extra:"pp. 1–6", doi:""},
+    {year: 2019, title:"Efficient Deduplication on Cloud Environment using Bloom Filter and IND-CCA2 Secured Cramer Shoup Cryptosystem", authors:"Mohamed Sirajudeen Y; Muralidharan; R. Anitha", venue:"2nd International Conference on Intelligent Data Communication Technologies and Internet of Things", extra:"2019", doi:""},
+    {year: 2018, title:"Survey on Tasks and Approaches of Sentiment Analysis", authors:"Muralidharan C; Anitha, R", venue:"International Conference For Phoenixes On Emerging Current Trends in Engineering and Management", extra:"2018", doi:""},
+    {year: 2017, title:"Risk Analysis of Cloud Service Providers by Analyzing the Frequency of Occurrence of Problems using Eclat Algorithm", authors:"Muralidharan C; Anitha, R", venue:"4th International Symposium on Big Data and Cloud Computing Challenges (ISBCC’17)", extra:"2017", doi:""},
+    {year: 2015, title:"Cloud Services Lifecycle of IT services Through Semantic Technology", authors:"Jainullabdeen A; Muralidharan C; Nithya B", venue:"International Conference On Recent Innovations In Engineering & Technology, Discovery", extra:"2015, 30(128), 234–239", doi:""}
+  ];
 
-const conferences = [
-"Hyperspectral Image Classification using GNN – ICETEA 2025",
-"Low-Cost Handheld Ultrasound – ICCSP 2025",
-"Smoking Behavior Dynamics using GNN – Springer 2025",
-"Fetal Health Analysis based on CTG – ICCSP 2025",
-"Vehicle Surveillance using YOLOv3 – Springer",
-"Text Summarization using BART – AIP 2024",
-"Proximity Device Identification – AIP 2024",
-"Real-Time Abnormal Event Detection – ICSTSN 2024",
-"Healthbot AI Chatbot – ICCSP 2024",
-"Meteorological Data Analysis – 2021",
-"Autonomous Trust Management Model – 2020",
-"Efficient Deduplication – 2019",
-"Survey on Sentiment Analysis – 2018",
-"Risk Analysis using Eclat – 2017",
-"Cloud Services Lifecycle – 2015"
-];
+  const patents = [
+    {year: 2018, title:"Search and Place Filter (SPF) – A Probabilistic Data Structure For Virtualization", authors:"R. Anitha; C. Muralidharan; P. Vinothiyalakshmi; T. Padmavathy; Mohamed Sirajudeen Y", venue:"Intellectual Property, India", extra:"(Granted)", doi:""},
+    {year: 2021, title:"Smart Cap for Hair Density Measurement and Growth Analysis", authors:"C. Muralidharan; R. Anitha; Mohamed Sirajudeen Y", venue:"Intellectual Property, India", extra:"Application No. 202141045571 (First Examination Report Submitted)", doi:""}
+  ];
 
-/* ===========================
-   BOOK CHAPTERS
-=========================== */
+  const talks = [
+    {year: 2025, title:'Session Chair – "1st International Conference on Innovative Computing Research and Cutting Edge Technologies in Computer Science and Engineering"', authors:"", venue:"Sri Venkateswara College of Engineering, Sriperumbudur (with AIMST University)", extra:"25 May 2025", doi:""},
+    {year: 2023, title:'Session Chair – "1st National Conference on Innovative Computing Research and Cutting Edge Technologies in Computer Science and Engineering"', authors:"", venue:"Sri Venkateswara College of Engineering, Sriperumbudur", extra:"04 May 2023", doi:""},
+    {year: 2022, title:'Webinar on "Introduction to IoT"', authors:"", venue:"C2C Club, Dept. of CSE, SVCE, Sriperumbudur", extra:"01 October 2022", doi:""},
+    {year: 2021, title:'Workshop on "IoT and Cloud- Hands-on session"', authors:"", venue:"Dept. of CSE, SVCE, Sriperumbudur", extra:"15–16 July 2021", doi:""},
+    {year: 2021, title:'Webinar on "Future Trends on Industrial Internet of Things"', authors:"", venue:"Special Lab – Industrial IoT, Bannari Amman Institute of Technology, Sathyamangalam", extra:"11 Feb 2021", doi:""},
+    {year: 2020, title:'Workshop on "Internet of Things and Machine Learning"', authors:"", venue:"Dept. of CSE, SVCE, Sriperumbudur", extra:"09–12 Mar 2020", doi:""},
+    {year: 2019, title:'Workshop on "A National Workshop on Industry 4.0"', authors:"", venue:"IQAC & Dept. of Mechanical Engineering, SVCE, Sriperumbudur", extra:"29–31 Aug 2019", doi:""},
+    {year: 2019, title:'Workshop on "Automotive Embedded Systems with Internet of Things & Cloud Computing"', authors:"", venue:"Dept. of CSE & Automobile Engineering, SVCE, Sriperumbudur", extra:"17–28 Jun 2019", doi:""},
+    {year: 2019, title:'Workshop on "Internet of Things for Automobile Engineers"', authors:"", venue:"Dept. of CSE (with Automobile Engg), SVCE, Sriperumbudur", extra:"25–27 Feb 2019", doi:""},
+    {year: 2019, title:'Workshop on "Internet of Things & Cloud Computing"', authors:"", venue:"Dept. of CSE, SVCE, Sriperumbudur", extra:"07–08 Feb 2019", doi:""},
+    {year: 2018, title:'Guest lecture on "Cloud Architecture Model" (National Level workshop on Cloud Architecture)', authors:"", venue:"Dept. of CSE, SRM University, Kattankulathur, Chennai-48", extra:"06 Nov 2018", doi:""},
+    {year: 2018, title:'Workshop on "Deploying Cloud Infrastructure using Eucalyptus"', authors:"", venue:"Dept. of CSE, SVCE, Sriperumbudur", extra:"03 Oct 2018", doi:""},
+    {year: 2016, title:'Workshop on "Theory of Big Data and Cloud Computing"', authors:"", venue:"Sadakathullah Appa Arts College, Tirunelveli", extra:"27 Sep 2016", doi:""},
+    {year: 2016, title:'Workshop on "Cloud and Big Data"', authors:"", venue:"Rajiv Gandhi College of Engineering, Sriperumbudur", extra:"31 Aug 2016", doi:""}
+  ];
 
-const books = [
-"Internet of Agro Drones for Precision Agriculture – 2023",
-"Decision Support in Healthcare – 2023",
-"Digitalized Land Registration using Blockchain – 2022",
-"IoT + Blockchain Integration – Springer",
-"Cloud-based Industrial IoT Infrastructure – 2022",
-"IoT + AI + Blockchain for Autonomous Vehicles – 2020",
-"Patient Report Analysis – Machine Learning for Healthcare – 2020"
-];
+  const fdp = [
+    {year: 2025, title:'Faculty Development Program on "Behavioural Psychology"', authors:"", venue:"Department of Computing Technology, SRM IST, Kattankulathur", extra:"21 Apr to 25 Apr 2025", doi:""},
+    {year: 2025, title:'Faculty Development Program on "5-day Face-to-Face UHV-II FDP"', authors:"", venue:"All India Council for Technical Education (AICTE)", extra:"11 Mar to 15 Mar 2025", doi:""},
+    {year: 2024, title:'Faculty Development Program on "Delivery of Design and Analysis of Algorithms with Mathematical Perspectives"', authors:"", venue:"Department of Computing Technology, SRM IST, Kattankulathur", extra:"18 Jan to 24 Jan 2024", doi:""},
+    {year: 2023, title:'Faculty Development Program on "Inculcating Universal Human Values in Technical Education"', authors:"", venue:"All India Council for Technical Education (AICTE)", extra:"06 Nov to 10 Nov 2023", doi:""},
+    {year: 2023, title:'Faculty Development Program on "Evolving Potential in Quantum Computing Applications"', authors:"", venue:"Department of Computing Technology, SRM IST, Kattankulathur", extra:"11 Sep to 15 Sep 2023", doi:""},
+    {year: 2022, title:'Short Term Training Program on "Cryptography in Quantum Computing"', authors:"", venue:"Department of Computing Technology, SRM IST, Kattankulathur", extra:"07 Oct to 21 Oct 2022", doi:""},
+    {year: 2022, title:'Faculty Development Program on "Programming and Problem Solving"', authors:"", venue:"Department of Computing Technology, SRM IST, Kattankulathur", extra:"01 Sep to 07 Sep 2022", doi:""},
+    {year: 2021, title:'Mission Shakti 2020 – "Training on Cyber Crime Awareness"', authors:"", venue:"College Community Network (CollCom) NSS, Government of India", extra:"Jan 2021", doi:""},
+    {year: 2020, title:'National Webinar on "Cellular Concepts and its evolution towards 5G and Beyond"', authors:"", venue:"Dept. of ECE, Nehru Institute of Engineering and Technology", extra:"10 Dec 2020", doi:""},
+    {year: 2020, title:'FDP on "Cutting Edge Trends in Deep Learning"', authors:"", venue:"Dept. of Computer Applications, Kongu Engineering College, Erode", extra:"16–29 Nov 2020", doi:""},
+    {year: 2020, title:'One week FDP on "Deep Learning for Computer Vision"', authors:"", venue:"Dept. of Computer Science and Applications, SRM IST, Ramapuram Campus, Chennai", extra:"02–06 Nov 2020", doi:""},
+    {year: 2020, title:'Universities Press Webinar on "Blockchain and Its Real-Life Applications"', authors:"", venue:"Universities Press (India) Pvt. Limited", extra:"06 Nov 2020", doi:""},
+    {year: 2020, title:'Six Days STTP on "Cyber security and Blockchain technology"', authors:"", venue:"Dept. of IT, Sanjivani College of Engineering, Kopargaon, Maharashtra", extra:"26–30 Oct 2020", doi:""},
+    {year: 2020, title:"Computing Trends Transforming 2020", authors:"", venue:"School of CSE & VITAA VIT, Chennai", extra:"22–23 Oct 2020", doi:""},
+    {year: 2020, title:"National Webinar on Legal Dialectics of Digital Forensics and Admissibility of Electronic Evidence", authors:"", venue:"KLE Society’s G.K Law College, Hubbali, Karnataka", extra:"21 Oct 2020", doi:""},
+    {year: 2020, title:"Skill Building Workshop on Analytics and Data Management – Insights on Data Science", authors:"", venue:"Dept. of CSE, SRM Institute of Technology, Chennai", extra:"20–21 Oct 2020", doi:""},
+    {year: 2020, title:'Six Day Online STTP on "Blockchain and its applications"', authors:"", venue:"Dept. of IT, Panimalar Institute of Technology, Chennai", extra:"19–24 Oct 2020", doi:""},
+    {year: 2020, title:'Six Day Online STTP on "Deep Learning Techniques for Ambient Intelligence and Smart Environment"', authors:"", venue:"Dept. of CSE, R.M.D Engineering College, Chennai", extra:"19–24 Oct 2020", doi:""},
+    {year: 2020, title:"Five Day Hands-On International STTP on Deep Learning Applications", authors:"", venue:"Dept. of ECE, Sri Venkateswara College of Engineering, Sriperumbudur", extra:"19–23 Oct 2020", doi:""},
+    {year: 2020, title:"International Conference on Signals, Communications and Embedded Systems", authors:"", venue:"Dept. of IT & ICT Academy of Tamilnadu, Government of Tamilnadu", extra:"14–18 Oct 2020", doi:""},
+    {year: 2020, title:"International Conference on Smart Materials and Emerging Technologies in Industry 4.0", authors:"", venue:"Sri Venkateswara College of Engineering, Tamilnadu", extra:"16–17 Oct 2020", doi:""},
+    {year: 2020, title:"International Webinar on Artificial Intelligence and its applications", authors:"", venue:"IRCC, Shree Venkateshwara University, Gajraula, Uttar Pradesh", extra:"16 Oct 2020", doi:""},
+    {year: 2020, title:"Technology Awareness Program for faculty: An Introduction to Machine Learning", authors:"", venue:"Dept. of CSE, JSPM Nahre Technical Campus, Pune, Maharashtra", extra:"11–16 May 2020", doi:""},
+    {year: 2019, title:"International Conference on Intelligent Data Communication Technologies and Internet of Things (Presented project)", authors:"", venue:"JCT College of Engineering, Coimbatore", extra:"12–13 Sep 2019", doi:""},
+    {year: 2019, title:'Smart India Hackathon 2019 – "Kill-a-Watt" (Mentored/Presented)', authors:"", venue:"Guru Nanak Institute of Technology, Kolkata", extra:"02–03 Mar 2019", doi:""},
+    {year: 2018, title:'Faculty Development program on "IoT – What and How?"', authors:"", venue:"E&ICT Academy, IIT Roorkee, Uttarakhand", extra:"24–28 Dec 2018", doi:""},
+    {year: 2018, title:"Translation from Machine Learning to Deep Learning: Text, Image and Speech Processing", authors:"", venue:"Dept. of CSE, SVCE, Sriperumbudur", extra:"12–17 Nov 2018", doi:""},
+    {year: 2018, title:"Faculty Research Day – 2018 (Presented project)", authors:"", venue:"SVCE, Sriperumbudur", extra:"26 Apr 2018", doi:""},
+    {year: 2018, title:'National Workshop on "Deep Learning and Image Processing"', authors:"", venue:"Dept. of CSE, SVCE, Sriperumbudur", extra:"08–09 Mar 2018", doi:""},
+    {year: 2018, title:"International Conference for Phoenix on Emerging Current Trends in Engineering and Management (Presented survey paper)", authors:"", venue:"Panimalar Engineering College", extra:"09–10 Feb 2018", doi:""},
+    {year: 2017, title:'Faculty Development Program on "Data Science and Big Data Analytics"', authors:"", venue:"E&ICT Academy, IIT Guwahati at Bannari Amman Institute of Technology, Erode", extra:"11–17 Sep 2017", doi:""},
+    {year: 2017, title:'Special Talk on "Data Science"', authors:"", venue:"Dept. of IT, SVCE, Sriperumbudur", extra:"13 Jun 2017", doi:""},
+    {year: 2017, title:"FDTP on Data Analytics", authors:"", venue:"Dept. of IT with T&P Cell and ZoomRX, SVCE, Sriperumbudur", extra:"05–07 Jun 2017", doi:""},
+    {year: 2017, title:"Faculty Research Day – 2017 (Presented project)", authors:"", venue:"SVCE, Sriperumbudur", extra:"26 Apr 2017", doi:""},
+    {year: 2017, title:"Research Scholars’ Symposium on Social Network Analysis", authors:"", venue:"Dept. of CSE, SSN College of Engineering", extra:"04 Apr 2017", doi:""},
+    {year: 2016, title:"Faculty Research Day – 2016 (Presented project)", authors:"", venue:"SVCE, Sriperumbudur", extra:"28 Apr 2016", doi:""},
+    {year: 2016, title:'Workshop on "Implementation of CloudSim and Hadoop"', authors:"", venue:"Dept. of CSE, SVCE, Sriperumbudur", extra:"05–06 Feb 2016", doi:""}
+  ];
 
-/* ===========================
-   PATENTS
-=========================== */
+  // ---------- UI + Rendering ----------
+  const TAB_DATA = {
+    journals: { label:"Journals", data:journals, badge:"Journal" },
+    conferences: { label:"Conferences", data:conferences, badge:"Conference" },
+    books: { label:"Book Chapters", data:bookChapters, badge:"Book Chapter" },
+    patents: { label:"Patents", data:patents, badge:"Patent" },
+    talks: { label:"Guest Lectures", data:talks, badge:"Guest Lecture" },
+    fdp: { label:"FDP / Workshops Attended", data:fdp, badge:"FDP/Workshop" }
+  };
 
-const patents = [
-"Search and Place Filter (SPF) – Granted Patent, 2018",
-"Smart Cap for Hair Density Measurement – Patent Application, 2021"
-];
+  let activeTab = "journals";
 
-/* ===========================
-   TALKS
-=========================== */
+  const tabsEl = document.getElementById("tabs");
+  const listEl = document.getElementById("list");
+  const qEl = document.getElementById("q");
+  const countEl = document.getElementById("count");
 
-const talks = [
-"Session Chair – International Conference – 2025",
-"Session Chair – National Conference – 2023",
-"Introduction to IoT Webinar – 2022",
-"IoT & Cloud Workshop – 2021",
-"Industrial IoT Trends – 2021",
-"IoT + ML Workshop – 2020"
-];
+  function esc(s){
+    return (s ?? "").toString()
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
 
-/* ===========================
-   FDP
-=========================== */
+  function metaLine(x){
+    const parts = [];
+    if(x.authors) parts.push(`<b>Authors:</b> ${esc(x.authors)}`);
+    if(x.venue) parts.push(`<b>Venue:</b> ${esc(x.venue)}`);
+    if(x.extra) parts.push(`<b>Details:</b> ${esc(x.extra)}`);
+    if(x.doi) parts.push(`<b>DOI/Link:</b> <a href="${esc(x.doi)}" target="_blank" rel="noopener">${esc(x.doi)}</a>`);
+    return parts.join("<br/>");
+  }
 
-const fdps = [
-"Behavioural Psychology FDP – SRM – 2025",
-"UHV-II FDP – AICTE – 2025",
-"Design & Analysis of Algorithms FDP – 2024",
-"Universal Human Values FDP – 2023",
-"Quantum Computing FDP – 2023",
-"Cryptography STTP – 2022",
-"Programming & Problem Solving FDP – 2022",
-"Deep Learning FDP – 2020",
-"Blockchain Webinar – 2020",
-"Cyber Security STTP – 2020"
-];
+  function render(){
+    const q = (qEl.value || "").trim().toLowerCase();
+    const {data, badge} = TAB_DATA[activeTab];
 
-/* ===========================
-   RENDER FUNCTION
-=========================== */
-
-function render(list, target){
-    const el=document.getElementById(target);
-    list.forEach(item=>{
-        el.innerHTML+=`<div class="card">${item}</div>`;
+    const filtered = data.filter(x => {
+      const blob = `${x.year||""} ${x.title||""} ${x.authors||""} ${x.venue||""} ${x.extra||""} ${x.doi||""}`.toLowerCase();
+      return !q || blob.includes(q);
     });
-}
 
-render(journals,"journalList");
-render(conferences,"confList");
-render(books,"bookList");
-render(patents,"patentList");
-render(talks,"talkList");
-render(fdps,"fdpList");
+    countEl.textContent = `${filtered.length} item${filtered.length===1?"":"s"}`;
 
+    listEl.innerHTML = filtered.map(x => `
+      <div class="item">
+        <div class="top">
+          <p class="t">${esc(x.title)}</p>
+          <div class="badges">
+            <span class="badge">${esc(badge)}</span>
+            <span class="badge gray">${esc(x.year || "Year")}</span>
+          </div>
+        </div>
+        <div class="meta">${metaLine(x)}</div>
+      </div>
+    `).join("");
+  }
+
+  // Tab click
+  tabsEl.addEventListener("click", (e) => {
+    const t = e.target.closest(".tab");
+    if(!t) return;
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    activeTab = t.dataset.tab;
+    qEl.value = "";
+    render();
+  });
+
+  // Search input
+  qEl.addEventListener("input", render);
+
+  // Initial render
+  render();
 </script>
-
 </body>
 </html>
