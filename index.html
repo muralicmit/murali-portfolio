@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. C. Muralidharan | Faculty Portfolio</title>
+
+<style>
+body{
+font-family:Segoe UI;
+margin:0;
+background:#f5f7fb;
+}
+
+nav{
+background:#0b3d91;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+position:sticky;
+top:0;
+}
+
+nav a{
+color:white;
+margin:0 12px;
+text-decoration:none;
+}
+
+.hero{
+background:linear-gradient(to right,#0b3d91,#1e90ff);
+color:white;
+text-align:center;
+padding:60px 20px;
+}
+
+section{
+padding:40px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:18px;
+margin:10px 0;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+h2{color:#0b3d91}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<b>Dr. C. Muralidharan</b>
+<div>
+<a href="#journals">Journals</a>
+<a href="#conferences">Conferences</a>
+<a href="#books">Book Chapters</a>
+<a href="#patents">Patents</a>
+<a href="#fdp">FDP</a>
+<a href="#talks">Talks</a>
+</div>
+</nav>
+
+<div class="hero">
+<h1>Dr. C. Muralidharan</h1>
+<p>Assistant Professor – SRM IST</p>
+<p>Cloud Computing | ML | IoT | Data Analytics</p>
+</div>
+
+<section id="journals">
+<h2>International Journals</h2>
+<div id="journalList"></div>
+</section>
+
+<section id="conferences">
+<h2>Conference Papers</h2>
+<div id="confList"></div>
+</section>
+
+<section id="books">
+<h2>Book Chapters</h2>
+<div id="bookList"></div>
+</section>
+
+<section id="patents">
+<h2>Patents</h2>
+<div id="patentList"></div>
+</section>
+
+<section id="talks">
+<h2>Guest Lectures / Resource Person</h2>
+<div id="talkList"></div>
+</section>
+
+<section id="fdp">
+<h2>FDP / Workshops Attended</h2>
+<div id="fdpList"></div>
+</section>
+
+<script>
+
+/* ===========================
+   JOURNAL PAPERS
+=========================== */
+
+const journals = [
+"Improved Tuberculosis Detection through Deep Learning, 2024",
+"Three-phase service level agreements and trust management model – IET Communications, 2022",
+"FogDedupe – Journal of Sensors, 2022",
+"Trusted Cloud Broker – Concurrency and Computation, 2020",
+"EDSAC – Wireless Personal Communications, 2021",
+"Risk Analysis using E-Eclat – Wireless Networks, 2019",
+"Efficient Deduplication – Lecture Notes on Data Engineering, 2019",
+"Energy Aware Scheduling – International Journal on Emerging Technologies, 2019",
+"Survey on Sentiment Analysis – Atlantis Press",
+"Cloud Services Lifecycle – Discovery Journal, 2015"
+];
+
+/* ===========================
+   CONFERENCES
+=========================== */
+
+const conferences = [
+"Hyperspectral Image Classification using GNN – ICETEA 2025",
+"Low-Cost Handheld Ultrasound – ICCSP 2025",
+"Smoking Behavior Dynamics using GNN – Springer 2025",
+"Fetal Health Analysis based on CTG – ICCSP 2025",
+"Vehicle Surveillance using YOLOv3 – Springer",
+"Text Summarization using BART – AIP 2024",
+"Proximity Device Identification – AIP 2024",
+"Real-Time Abnormal Event Detection – ICSTSN 2024",
+"Healthbot AI Chatbot – ICCSP 2024",
+"Meteorological Data Analysis – 2021",
+"Autonomous Trust Management Model – 2020",
+"Efficient Deduplication – 2019",
+"Survey on Sentiment Analysis – 2018",
+"Risk Analysis using Eclat – 2017",
+"Cloud Services Lifecycle – 2015"
+];
+
+/* ===========================
+   BOOK CHAPTERS
+=========================== */
+
+const books = [
+"Internet of Agro Drones for Precision Agriculture – 2023",
+"Decision Support in Healthcare – 2023",
+"Digitalized Land Registration using Blockchain – 2022",
+"IoT + Blockchain Integration – Springer",
+"Cloud-based Industrial IoT Infrastructure – 2022",
+"IoT + AI + Blockchain for Autonomous Vehicles – 2020",
+"Patient Report Analysis – Machine Learning for Healthcare – 2020"
+];
+
+/* ===========================
+   PATENTS
+=========================== */
+
+const patents = [
+"Search and Place Filter (SPF) – Granted Patent, 2018",
+"Smart Cap for Hair Density Measurement – Patent Application, 2021"
+];
+
+/* ===========================
+   TALKS
+=========================== */
+
+const talks = [
+"Session Chair – International Conference – 2025",
+"Session Chair – National Conference – 2023",
+"Introduction to IoT Webinar – 2022",
+"IoT & Cloud Workshop – 2021",
+"Industrial IoT Trends – 2021",
+"IoT + ML Workshop – 2020"
+];
+
+/* ===========================
+   FDP
+=========================== */
+
+const fdps = [
+"Behavioural Psychology FDP – SRM – 2025",
+"UHV-II FDP – AICTE – 2025",
+"Design & Analysis of Algorithms FDP – 2024",
+"Universal Human Values FDP – 2023",
+"Quantum Computing FDP – 2023",
+"Cryptography STTP – 2022",
+"Programming & Problem Solving FDP – 2022",
+"Deep Learning FDP – 2020",
+"Blockchain Webinar – 2020",
+"Cyber Security STTP – 2020"
+];
+
+/* ===========================
+   RENDER FUNCTION
+=========================== */
+
+function render(list, target){
+    const el=document.getElementById(target);
+    list.forEach(item=>{
+        el.innerHTML+=`<div class="card">${item}</div>`;
+    });
+}
+
+render(journals,"journalList");
+render(conferences,"confList");
+render(books,"bookList");
+render(patents,"patentList");
+render(talks,"talkList");
+render(fdps,"fdpList");
+
+</script>
+
+</body>
+</html>
